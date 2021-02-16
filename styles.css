@@ -1,0 +1,204 @@
+/* ========== global variables ========== */
+
+:root {
+  /* text */
+    --text-black-high: rgba(0, 0, 0, 0.87);
+    --text-black-med: rgba(0, 0, 0, 0.6);
+    --text-black-low: rgba(0, 0, 0, 0.38);
+    --text-white-high: rgba(255, 255, 255, 0.87);
+    --text-white-med: rgba(255, 255, 255, 0.6);
+    --text-white-low: rgba(255, 255, 255, 0.38);
+  /* misc */
+    --active: 0.87;
+    --inactive: 0.6;
+    --disabled: 0.38;
+}
+
+:root[theme="dark"] {
+  /* brand colors */
+  --color-primary: ; /* 200 tonal range */
+  --color-primary-var: ; /* 500 tonal range */
+  --color-secondary: ; /* 50-200 tonal range */
+  --color-secondary-var: ; /* 50-200 tonal range */
+  /* backgrounds */
+  --background-base: rgb(18, 18, 18);
+  /* elevation refs */
+  --elevation-00dp: rgb(18, 18, 18); /* text btn, top app bar (rest), */
+  --elevation-01dp: rgb(30, 30, 30); /* searchbar (rest), card (rest), switch */
+  --elevation-02dp: rgb(33, 33, 33); /* btn (resting) */
+  --elevation-03dp: rgb(37, 37, 37); /* refresh indicator search bar */
+  --elevation-04dp: rgb(39, 39, 39); /* top app bar (scrolled/resting) */
+  --elevation-06dp: rgb(44, 44, 44); /* floating action btn snackbar */
+  --elevation-08dp: rgb(46, 46, 46); /* bottom/side sheet, btm nav/app bar, menu/submenu, card (picked up), btn (pressed) */
+  --elevation-12dp: rgb(51, 51, 51); /* floating action btn (pressed) */
+  --elevation-16dp: rgb(54, 54, 54); /* modal bottom/side, nav drawer */
+  --elevation-24dp: rgb(56, 56, 56); /* dialogue */
+  /* text */
+  /* borders */
+  --border-primary: rgb(255, 255, 255, 0.87);
+  --focus: 2px dotted rgb(224, 224, 224);
+  /* images */
+  --theme-toggle-icon: url("/assets/wb_sunny-white-24dp.svg");
+  /* misc */
+  --error: rgb(207, 102, 121);
+  --warning: rgb(255, 245, 157);
+  --success: rgb(165, 214, 167);
+  --info: rgb(144, 202, 249);
+}
+
+:root[theme="light"] {
+  /* brand colors */
+  --color-primary: ; /* 500 tonal range */
+  --color-primary-var: ; /* +/- 200 of primary */
+  --color-secondary: ; /* 500 tonal range */
+  --color-secondary-var: ; /* +/- 200 of primary */
+  /* backgrounds */
+  --background-base: rgb(240, 240, 240);
+  /* text */
+  /* borders */
+  --border-primary: rgb(0, 0, 0, 0.87);
+  --focus: 2px dotted rgb(224, 224, 224);
+  /* images */
+  --theme-toggle-icon: url("/assets/wb_sunny-black-24dp.svg");
+  /* misc */
+  --error: rgb(176, 0, 32);
+  --warning: rgb(255, 235, 59);
+  --success: rgb(76, 175, 80);
+  --info: rgb(33, 150, 243);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  background-color: var(--background-base);
+}
+
+a {
+  text-decoration: none;
+}
+
+
+/* ========== HEADER/MAIN NAV ========== */
+#upper-nav {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  padding-right: 100px;
+  background-color: rgb(197, 122, 79)
+}
+
+#upper-nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.link-list > li {
+  display: inline-block;
+  padding: 10px 0;
+}
+
+.link-list a,
+.link-list span {
+  padding: 10px 1rem;
+  font-size: 1.25rem;
+  color: black;
+  cursor: pointer;
+}
+
+.link-list a:hover,
+.link-list span:hover {
+  background-color: rgb(187, 0, 0)
+}
+
+.dropdown-links {
+  display: none;
+  position: absolute;
+  padding: 0;
+  background-color: rgb(202, 202, 202);
+  transform: translateY(10px);
+}
+
+.visible {
+  display: block;
+}
+
+.dropdown-links > li {
+  display: block;
+  margin: 0;
+}
+
+.dropdown-links a {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 20px 1rem;
+  text-align: left;
+}
+
+.dropdown-links a:hover {
+  background-color: rgb(100, 100, 241);
+}
+
+.secondary-link-list {
+  position: absolute;
+  right: 0;
+}
+
+#more-container > .dropdown-links {
+  right: 0;
+}
+
+
+/* ========== MAIN ========== */
+#main {
+  background-color: var(--background-base);
+  color: white;
+}
+
+.page-container {
+  width: 100%;
+  height: 100vh;
+  color: rgb(252, 252, 252);
+}
+
+
+/* ========== FOOTER/SECONDARY NAV ========== */
+#lower-nav {
+  position: absolute;
+  width: 100%;
+  height: 100px;
+  bottom: 0;
+  left: 0;
+  background: rgb(4, 0, 255);
+}
+
+/* ========== MEDIA QUERIES ========== */
+@media only screen and (min-width: 430px) {
+
+}
+
+@media only screen and (min-width: 768px) {
+
+}
+
+/* @media only screen and (min-width: 992px) {
+
+}
+
+@media only screen and (min-width: 1200px) {
+
+} */
+
+/* @media (prefers-reduced-motion: reduce) {
+  :root {
+    scroll-behavior: auto !important;
+  }
+
+  .animated {
+    transition: none !important;
+  }
+} */

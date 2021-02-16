@@ -1,0 +1,1 @@
+This project combines a few mini practice projects in one: a dropdown menu, a mobile menu, and an image slider.

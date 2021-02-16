@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html theme="dark" lang="en">
+  <head>
+    <title>Dynamic UI</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" 
+    href="/assets/thatblindgeye-favicon.png">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap">    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header>
+      <nav id="upper-nav">
+        <ul class="primary-link-list link-list">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Link 1</a></li>
+          <li><a href="#">Link 2</a></li>
+          <li><a href="#">Link 3</a></li>
+          <li><a href="#">Link 4</a></li>
+          <li id="dropdown-container">
+            <span role="button" class="dropdown-button" tabindex="0">Dropdown</span>
+            <ul class="dropdown-links" aria-labelledby="dropdown-container">
+              <li><a href="#">Dropdown ADropdown A</a></li>
+              <li><a href="#">Dropdown B</a></li>
+              <li><a href="#">Dropdown C</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Link 5</a></li>
+        </ul>
+        <ul class="secondary-link-list link-list">
+          <li id="more-container">
+            <span role="button" class="dropdown-button" tabindex="0">More</span>
+            <ul class="dropdown-links" aria-labelledby="more-container">
+              <li><a href="#">Dropdown B</a></li>
+              <li><a href="#">Dropdown C</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <div id="main">
+      <div class="page-container">
+      </div>
+    </div>
+
+    <footer>
+      <nav id="lower-nav"></nav>
+    </footer>
+    <script src="app.js"></script>
+  </body>
+</html>
