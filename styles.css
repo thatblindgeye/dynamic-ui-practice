@@ -22,8 +22,8 @@
   /* backgrounds */
   --background-base: rgb(18, 18, 18);
   --header-bg: rgb(39, 39, 39);
-  --link-hover-bg: rgb(222, 141, 137);
-  --sub-link-hover-bg: rgb(246, 197, 199);
+  --nav-hover-bg: rgb(222, 141, 137);
+  --sub-nav-hover-bg: rgb(246, 197, 199);
   --dropdown-bg: rgb(46, 46, 46);
   --sub-dropdown-bg: rgb(56, 56, 56);
   /* elevation refs */
@@ -39,7 +39,8 @@
   --elevation-24dp: rgb(56, 56, 56); /* dialogue */
   /* text */
   --text-primary: rgb(255, 255, 255, 0.87);
-  --link-hover-text: rgba(0, 0, 0, 0.87);
+  --nav-hover-text: rgba(0, 0, 0, 0.87);
+  --link-text: rgb(217, 217, 217);
   /* borders */
   --border-primary: rgb(255, 255, 255, 0.87);
   --focus: 2px solid rgb(224, 224, 224);
@@ -61,13 +62,14 @@
   /* backgrounds */
   --background-base: rgb(240, 240, 240);
   --header-bg: rgb(255, 255, 255);
-  --link-hover-bg: rgb(165, 16, 13);
-  --sub-link-hover-bg: rgb(172, 32, 22);
+  --nav-hover-bg: rgb(165, 16, 13);
+  --sub-nav-hover-bg: rgb(172, 32, 22);
   --dropdown-bg: rgb(220, 220, 220);
   --sub-dropdown-bg: rgb(150, 150, 150);
   /* text */
   --text-primary: rgba(0, 0, 0, 0.87);
-  --link-hover-text: rgba(255, 255, 255, 0.87);
+  --nav-hover-text: rgba(255, 255, 255, 0.87);
+  --link-text: rgb(0, 20, 240);
   /* borders */
   --border-primary: rgba(0, 0, 0, 0.87);
   --focus: 2px solid rgb(30, 30, 30);
@@ -138,8 +140,8 @@ a {
 .primary-links .dropdown-button:focus,
 #secondary-links .more-links-button:hover,
 #secondary-links .more-links-button:focus {
-  background-color: var(--link-hover-bg);
-  color: var(--link-hover-text);
+  background-color: var(--nav-hover-bg);
+  color: var(--nav-hover-text);
   outline: none;
 }
 
@@ -173,7 +175,7 @@ a {
 .dropdown-links .link:focus,
 .dropdown-links .dropdown-button:hover,
 .dropdown-links .dropdown-button:focus {
-  background-color: var(--sub-link-hover-bg);
+  background-color: var(--sub-nav-hover-bg);
 }
 
 .more-links {
@@ -222,6 +224,7 @@ a {
 /* ========== main content ========== */
 #main {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
@@ -229,21 +232,88 @@ a {
   color: white;
 }
 
-.image-slider {
+.image-slider-container {
+  position: relative;
   width: 90vw;
   height: 90vw;
   max-height: 500px;
+  margin: 2rem;
   padding: 10px;
   background-color: green;
   color: rgb(252, 252, 252);
 }
 
+.slider-arrow {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  padding: 0 10px;
+  transition: background-color 0.3s;
+}
+
+.slider-arrow:hover,
+.slider-arrow:focus {
+  background-color: rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.slider-arrow:focus {
+  outline: none;
+}
+
+.previous-arrow {
+  left: 0;
+}
+
+.next-arrow {
+  right: 0;
+}
+
+.slider-dots .dot {
+  display: inline-block;
+  height: 25px;
+  width: 25px;
+  background-color: red;
+  border-radius: 50%;
+}
 
 /* ========== footer/secondary nav ========== */
 #lower-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  height: 100px;
-  background: var(--header-bg);
+  padding: 25px 10px;
+  background-color: var(--header-bg);
+}
+
+#lower-nav a {
+  color: var(--link-text);
+  font-size: 0.9rem;
+}
+
+.github-logo {
+  display: block;
+  width: 48px;
+  height: auto;
+  margin: 0 auto 5px;
+  opacity: 0.75;
+}
+
+#lower-nav a:hover {
+  text-decoration: underline;
+}
+
+#lower-nav a:focus {
+  outline: var(--focus);
+  outline-offset: 4px;
+}
+
+#lower-nav a:hover img,
+#lower-nav a:focus img {
+  opacity: 1;
 }
 
 /* ========== media queries ========== */

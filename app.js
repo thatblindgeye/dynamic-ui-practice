@@ -122,14 +122,15 @@ const upperNavLinks = (() => {
 
 const themeOptions = (() => {
   const themeToggle = document.querySelector(".theme-toggle");
-  
+  const githubLogo = document.querySelector(".github-logo");
+
   const changeTheme = () => {
     if (document.documentElement.getAttribute("theme") === "dark") {
       document.documentElement.setAttribute("theme", "light");
-      themeToggle.setAttribute("aria-label", "Light theme enabled");
+      githubLogo.setAttribute("src", "assets/GitHub-Mark-32px.png");
     } else {
       document.documentElement.setAttribute("theme", "dark");
-      themeToggle.setAttribute("aria-label", "Light theme disabled");
+      githubLogo.setAttribute("src", "assets/GitHub-Mark-Light-32px.png");
     };
   };
 

@@ -49,20 +49,30 @@
           </li>
         </ul>
       </nav>
-      <span role="switch" class="theme-toggle" tabindex="0">
+      <span aria-hidden="true" role="switch" class="theme-toggle" tabindex="0">
       </span>
     </header>
 
     <div id="main">
-      <div class="image-slider">
-        hello
+      <div class="image-slider-container">
+        <div class="previous-arrow slider-arrow" tabindex="0"><<</div>
+        <div class="next-arrow slider-arrow" tabindex="0">>></div>
+        <div class="image-container"></div>
+      </div>
+      <div class="slider-dots">
+        <span class="dot" tabindex="0"></span>
+        <span class="dot" tabindex="0"></span>
+        <span class="dot" tabindex="0"></span>
+        <span class="dot" tabindex="0"></span>
+        <span class="dot" tabindex="0"></span>
       </div>
     </div>
 
     <footer>
       <nav id="lower-nav">
-        <a href="https://github.com/thatblindgeye">
-          <img src="assets/GitHub-Mark-32px.png">
+        <a href="https://github.com/thatblindgeye" target="_blank">
+          <img class="github-logo" src="assets/GitHub-Mark-32px.png" alt="that blind guy's github profile">
+          opens in a new tab
         </a>
       </nav>
     </footer>
