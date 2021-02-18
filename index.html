@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html theme="dark" lang="en">
+<html theme="light" lang="en">
   <head>
     <title>Dynamic UI</title>
 
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="icon" href="/assets/thatblindgeye-favicon.png">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -16,52 +16,55 @@
   <body>
     <header>
       <nav id="upper-nav">
-        <ul class="upper-links-visible upper-links">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Link 1</a></li>
-          <li><a href="#">Link 2</a></li>
-          <li><a href="#">Link 3</a></li>
-          <li><a href="#">Link 4</a></li>
+        <ul class="upper-links primary-links">
+          <li><a href="#" class="link">Home</a></li>
+          <li><a href="#" class="link">Link 1</a></li>
+          <li><a href="#" class="link">Link 2</a></li>
+          <li><a href="#" class="link">Link 3</a></li>
+          <li><a href="#" class="link">Link 4</a></li>
           <li class="dropdown-container">
             <span role="button" id="dropdown-1" class="dropdown-button" tabindex="0" aria-expanded="false">Dropdown</span>
             <ul class="dropdown-links" aria-labelledby="dropdown-1">
-              <li><a href="#">Sub-Link 1 Sub-Link 1</a></li>
-              <li><a href="#">Sub-Link 2</a></li>
-              <li><a href="#">Sub-Link 3</a></li>
+              <li><a href="#" class="link">Sub-Link A Sub-Link A</a></li>
+              <li><a href="#" class="link">Sub-Link B</a></li>
+              <li><a href="#" class="link">Sub-Link C</a></li>
             </ul>
           </li>
-          <li><a href="#">Link 5</a></li>
-        </ul>
-        
-        <ul class="upper-links-hidden upper-links">
-          <li id="more-container">
-            <span role="button" id="more-dropdown" class="dropdown-button" tabindex="0" aria-expanded="false">More</span>
-            <ul class="dropdown-links more-links" aria-labelledby="more-dropdown">
-              <li><a href="#">Sub-Link 4 Sub-Link 4</a></li>
-              <li><a href="#">Sub-Link 5</a></li>
-              <li class="dropdown-container">
-                <span role="button" id="dropdown-2" class="dropdown-button" tabindex="0" aria-expanded="false">Other Dropdown</span>
-                <ul class="dropdown-links" aria-labelledby="dropdown-2">
-                  <li><a href="#">Sub-Link 1a  Sub-Link 1a</a></li>
-                  <li><a href="#">Sub-Link 1b</a></li>
-                  <li><a href="#">Sub-Link 1c</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Sub-Link 6</a></li>
+          <li><a href="#" class="link">Link 5</a></li>
+          <li><a href="#" class="link">Link 6 Link 6</a></li>
+          <li><a href="#" class="link">Link 7</a></li>
+          <li class="dropdown-container">
+            <span role="button" id="dropdown-2" class="dropdown-button" tabindex="0" aria-expanded="false">Other Dropdown</span>
+            <ul class="dropdown-links" aria-labelledby="dropdown-2">
+              <li><a href="#" class="link">Sub-Link D  Sub-Link D</a></li>
+              <li><a href="#" class="link">Sub-Link E</a></li>
+              <li><a href="#" class="link">Sub-Link F</a></li>
+            </ul>
+          </li>
+          <li><a href="#" class="link">Link 8</a></li>
+          <li class="more-container">
+            <span role="button" class="dropdown-button more-links-button" tabindex="0" aria-expanded="false">More</span>
+            <ul class="dropdown-links more-links" aria-labelledby="more-links-button">
             </ul>
           </li>
         </ul>
       </nav>
+      <span role="switch" class="theme-toggle" tabindex="0">
+      </span>
     </header>
 
     <div id="main">
-      <div class="page-container">
+      <div class="image-slider">
         hello
       </div>
     </div>
 
     <footer>
-      <nav id="lower-nav"></nav>
+      <nav id="lower-nav">
+        <a href="https://github.com/thatblindgeye">
+          <img src="assets/GitHub-Mark-32px.png">
+        </a>
+      </nav>
     </footer>
     <script src="app.js"></script>
   </body>

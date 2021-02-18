@@ -1,24 +1,61 @@
-const nav = document.getElementById("upper-nav");
-const vis = document.querySelector(".upper-links-visible");
+"use strict";
+
+const upperNavLinks = (() => {
+  const convertRemToPixels = (rem) => {    
+    return rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
+  };
+
+  const moreButton = document.querySelector(".more-links-button");
+  const moreContainer = document.querySelector(".more-container");
+  const moreLinksList = document.querySelector(".more-links");
+  const toggleMoreVisibility = () => {
+    if (moreLinksList.children.length === 0) {
+      moreContainer.style.display = "none";
+      moreButton.setAttribute("aria-expanded", "false");
+      moreLinksList.classList.remove("visible");
+    } else {
+      moreContainer.style.display = "block";
+    }
+  };
+
+  const moveLinks = (recursion) => {
+    const navbar = document.getElementById("upper-nav");
+    const navWidth = navbar.offsetWidth;
+    const stopWidth = moreContainer.offsetWidth + convertRemToPixels(10);
+    const visibleContainer = document.querySelector(".primary-links");
+    const visibleLinks = document.querySelectorAll(".primary-links > li:not(.more-container)");
+    const visibleLength = visibleLinks.length;
+    const visibleWidth = visibleContainer.offsetWidth;
+
+    if (visibleWidth >= navWidth - stopWidth && visibleLength) {
+      if (!moreLinksList.children.length) {
+        moreLinksList.appendChild(visibleLinks[visibleLength - 1]);
+      } else {
+        // add to More list in original nav order
+        moreLinksList.insertBefore(visibleLinks[visibleLength - 1], moreLinksList.children[0]);
+      };
+      // rerun function until visibleWidth is < navWidth + stopWidth
+      moveLinks();
+    } else {
+      if (!moreLinksList.children.length) return;
+      visibleContainer.insertBefore(moreLinksList.children[0], moreContainer);
+    };
+  };
+
+  moveLinks();
+  toggleMoreVisibility();
+
+  window.addEventListener("resize", () => {
+    moveLinks();
+    toggleMoreVisibility();
+  });
 
 
+  const dropdownButtons = document.getElementsByClassName("dropdown-button");
+  const dropdownLists = document.getElementsByClassName("dropdown-links");
 
-// window.addEventListener("resize", () => {
-//   if (vis.offsetWidth >= nav.offsetWidth - 150) {
-//     const length = document.querySelector(".upper-links-visible").children.length;
-//     document.querySelector("#more-container .dropdown-links").appendChild(document.querySelector(".upper-links-visible").children[length - 1]);
-//   } else if (vis.offsetWidth < nav.offsetWidth - 150) {
-//     const length = document.querySelector("#more-container .dropdown-links").children.length;
-//     document.querySelector(".upper-links-visible").appendChild(document.querySelector("#more-container .dropdown-links").children[length - 1]);
-//   }
-// })
-
-const navBar = (() => {
-  const dropdownButtons = document.querySelectorAll(".dropdown-button");
-  const dropdownLists = document.querySelectorAll(".dropdown-links");
-
-  function checkAriaExpanded() {
-    Array.from(dropdownLists).forEach(item => {
+  const checkAriaExpanded = () => {
+    Array.from(dropdownLists).forEach((item) => {
       if (item.classList.contains("visible")) {
         item.previousElementSibling.setAttribute("aria-expanded", "true");
       } else {
@@ -27,54 +64,82 @@ const navBar = (() => {
     });
   };
 
-  function hideDropdownLinks(e) {
-    Array.from(dropdownLists).forEach(item => {
-      if (item !== e.target.nextElementSibling && 
-          !e.target.parentElement.parentElement.classList.contains("dropdown-links")) {
+  const hideDropdownLinks = (e) => {
+    Array.from(dropdownLists).forEach((item) => {
+      if (
+        item !== e.target.nextElementSibling &&
+        !e.target.parentElement.parentElement.classList.contains(
+          "dropdown-links"
+        )
+      ) {
         item.classList.remove("visible");
-      };
+      }
     });
     checkAriaExpanded();
   };
 
-  function toggleDropdownLinks(e) {
+  const toggleDropdownLinks = (e) => {
     const dropdownList = e.target.nextElementSibling;
     dropdownList.classList.toggle("visible");
     checkAriaExpanded();
   };
-  
-  Array.from(dropdownButtons).forEach(item => {
+
+  Array.from(dropdownButtons).forEach((item) => {
     item.addEventListener("click", (e) => {
       hideDropdownLinks(e);
       toggleDropdownLinks(e);
     });
   });
 
-  Array.from(dropdownButtons).forEach(item => {
+  Array.from(dropdownButtons).forEach((item) => {
     item.addEventListener("keydown", (e) => {
       if (e.key === " " || e.key === "Enter") {
         e.preventDefault();
         hideDropdownLinks(e);
         toggleDropdownLinks(e);
-      };
+      }
     });
   });
-  
+
   window.addEventListener("click", (e) => {
     if (!e.target.classList.contains("dropdown-button")) {
-      Array.from(dropdownLists).forEach(item => {
-        item.classList.remove("visible")
+      Array.from(dropdownLists).forEach((item) => {
+        item.classList.remove("visible");
       });
-    };
+    }
     checkAriaExpanded();
   });
 
   window.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
-      Array.from(dropdownLists).forEach(item => {
-        item.classList.remove("visible")
+      Array.from(dropdownLists).forEach((item) => {
+        item.classList.remove("visible");
       });
-    };
+    }
     checkAriaExpanded();
   });
+})();
+
+const themeOptions = (() => {
+  const themeToggle = document.querySelector(".theme-toggle");
+  
+  const changeTheme = () => {
+    if (document.documentElement.getAttribute("theme") === "dark") {
+      document.documentElement.setAttribute("theme", "light");
+      themeToggle.setAttribute("aria-label", "Light theme enabled");
+    } else {
+      document.documentElement.setAttribute("theme", "dark");
+      themeToggle.setAttribute("aria-label", "Light theme disabled");
+    };
+  };
+
+  changeTheme();
+  themeToggle.addEventListener("click", changeTheme);
+  themeToggle.addEventListener("keydown", (e) => {
+    if (e.key === " " || e.key === "Enter") {
+      e.preventDefault();
+      changeTheme();
+    };
+  });
+
 })();
