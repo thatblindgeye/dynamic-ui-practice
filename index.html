@@ -55,8 +55,12 @@
 
     <div id="main">
       <div class="image-slider-container">
-        <div class="previous-arrow slider-arrow" tabindex="0"><<</div>
-        <div class="next-arrow slider-arrow" tabindex="0">>></div>
+        <div class="previous-arrow slider-arrow" tabindex="0" aria-label="previous image">
+          <span class="material-icons" aria-hidden="true">navigate_before</span>
+        </div>
+        <div class="next-arrow slider-arrow" tabindex="0" aria-label="next image">
+          <span class="material-icons" aria-hidden="true">navigate_next</span>
+        </div>
         <div class="image-container"></div>
       </div>
       <div class="slider-dots">

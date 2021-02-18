@@ -26,6 +26,7 @@
   --sub-nav-hover-bg: rgb(246, 197, 199);
   --dropdown-bg: rgb(46, 46, 46);
   --sub-dropdown-bg: rgb(56, 56, 56);
+  --slider-bg: rgb(44, 44, 44);
   /* elevation refs */
   --elevation-00dp: rgb(18, 18, 18); /* text btn, top app bar (rest), */
   --elevation-01dp: rgb(30, 30, 30); /* searchbar (rest), card (rest), switch */
@@ -66,6 +67,7 @@
   --sub-nav-hover-bg: rgb(172, 32, 22);
   --dropdown-bg: rgb(220, 220, 220);
   --sub-dropdown-bg: rgb(150, 150, 150);
+  --slider-bg: rgb(220, 220, 220);
   /* text */
   --text-primary: rgba(0, 0, 0, 0.87);
   --nav-hover-text: rgba(255, 255, 255, 0.87);
@@ -99,8 +101,13 @@ a {
 
 
 /* ========== header/main nav ========== */
+header {
+  position: relative;
+}
+
 #upper-nav {
   display: flex;
+  flex-wrap: wrap;
   align-items: flex-end;
   width: 100%;
   background-color: var(--header-bg);
@@ -111,6 +118,7 @@ a {
   margin: 0;
   padding: 10px 0;
   list-style: none;
+  overflow: hidden;
 }
 
 .upper-links .link,
@@ -124,20 +132,16 @@ a {
   cursor: pointer;
 }
 
-.primary-links {
-  overflow: hidden;
-}
-
-.primary-links > li {
+.upper-links > li {
   flex-shrink: 0;
   display: inline-block;
 }
 
-.primary-links .active-link,
-.primary-links .link:hover,
-.primary-links .link:focus,
-.primary-links .dropdown-button:hover,
-.primary-links .dropdown-button:focus,
+.upper-links .active-link,
+.upper-links .link:hover,
+.upper-links .link:focus,
+.upper-links .dropdown-button:hover,
+.upper-links .dropdown-button:focus,
 #secondary-links .more-links-button:hover,
 #secondary-links .more-links-button:focus {
   background-color: var(--nav-hover-bg);
@@ -153,7 +157,7 @@ a {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
 }
 
-.primary-links .dropdown-links {
+.upper-links .dropdown-links {
   transform: translateY(10px);
 }
 
@@ -200,7 +204,7 @@ a {
 
 .theme-toggle {
   position: absolute;
-  top: 10px;
+  bottom: 10px;
   right: 25px;
   width: 24px;
   height: 24px;
@@ -225,9 +229,11 @@ a {
 #main {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  width: 100%;
   min-height: 100vh;
+  margin-bottom: 25px;
   background-color: var(--background-base);
   color: white;
 }
@@ -235,12 +241,14 @@ a {
 .image-slider-container {
   position: relative;
   width: 90vw;
-  height: 90vw;
-  max-height: 500px;
+  max-width: 800px;
+  height: 50vw;
+  max-height: 450px;
   margin: 2rem;
   padding: 10px;
-  background-color: green;
-  color: rgb(252, 252, 252);
+  background-color: var(--slider-bg);
+  color: var(--text-primary);
+  box-shadow: 0 0 10px black;
 }
 
 .slider-arrow {
@@ -249,18 +257,21 @@ a {
   position: absolute;
   top: 0;
   height: 100%;
-  padding: 0 10px;
   transition: background-color 0.3s;
 }
 
 .slider-arrow:hover,
 .slider-arrow:focus {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(112, 112, 112, 0.3);
   cursor: pointer;
 }
 
 .slider-arrow:focus {
   outline: none;
+}
+
+.slider-arrow .material-icons {
+  font-size: 3rem;
 }
 
 .previous-arrow {
@@ -285,6 +296,7 @@ a {
   justify-content: center;
   align-items: center;
   width: 100%;
+  height: 100px;
   padding: 25px 10px;
   background-color: var(--header-bg);
 }
