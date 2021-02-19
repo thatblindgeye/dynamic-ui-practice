@@ -1,5 +1,7 @@
 "use strict";
 
+import "./styles.css";
+
 const upperNavLinks = (() => {
   const convertRemToPixels = (rem) => {    
     return rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
