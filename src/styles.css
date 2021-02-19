@@ -244,10 +244,14 @@ header {
   min-height: 100vh;
   padding: 2rem 20px;
   background-color: var(--background-base);
-  color: white;
 }
 
-.image-slider-container {
+.image-slider-container:focus {
+  outline: var(--focus);
+  outline-offset: 5px;
+}
+
+.image-container {
   position: relative;
   width: 90vw;
   max-width: 900px;
@@ -260,7 +264,7 @@ header {
   overflow: hidden;
 }
 
-.image-slider-container img {
+.image-container img {
   display: block;
   width: 100%;
   height: auto;
@@ -269,7 +273,6 @@ header {
 
 .image-credits {
   display: flex;
-
   align-items: center;
   position: absolute;
   bottom: 0;
@@ -285,12 +288,19 @@ header {
 
 .credit-link {
   margin-left: 1rem;
+  padding-bottom: 2px;
   color: var(--text-white-high);
+  border-top: 3px solid transparent;
+  border-bottom: 1px solid transparent;
 }
 
 .credit-link:hover,
 .credit-link:focus {
-  text-decoration: underline;
+  border-bottom: 1px solid var(--text-white-high);
+}
+
+.credit-link:focus {
+  outline: none;
 }
 
 .slider-arrow {
@@ -371,11 +381,6 @@ header {
   background-color: var(--header-bg);
 }
 
-#lower-nav a {
-  color: var(--link-text);
-  font-size: 0.9rem;
-}
-
 .github-logo {
   display: block;
   width: 48px;
@@ -383,8 +388,15 @@ header {
   margin: 0 auto 5px;
 }
 
+#lower-nav a {
+  padding-bottom: 2px;
+  color: var(--link-text);
+  border-bottom: 1px solid transparent;
+  font-size: 0.9rem;
+}
+
 #lower-nav a:hover {
-  text-decoration: underline;
+  border-bottom: 1px solid var(--text-white-high);
 }
 
 #lower-nav a:focus {

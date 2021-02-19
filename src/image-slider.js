@@ -41,7 +41,34 @@ const imageSlider = (() => {
     document.querySelector(".slider-dots").appendChild(dot);
   })
 
+  const setActiveDot = (indexInput) => {
+    const dots = document.getElementsByClassName("dot");
+    Array.from(dots).forEach((dot) => {
+      dot.classList.remove("active-dot");
+    });
+    dots[indexInput].classList.add("active-dot");
+  };
 
+  const cycleImages = (imageIndex) => {
+    const currentImage = document.querySelector(".current-image");
+    const imageCredit = document.querySelector(".credit-link");
+    currentImage.setAttribute("src", images[imageIndex].url);
+    currentImage.setAttribute("alt", images[imageIndex].alt);
+    imageCredit.setAttribute("href", images[imageIndex]["credit link"]);
+    imageCredit.textContent = images[imageIndex]["credit name"];
+
+    setActiveDot(imageIndex);
+
+    setTimeout(() => {
+      if (imageIndex === images.length - 1) {
+        cycleImages(imageIndex = 0);
+      } else {
+        cycleImages(imageIndex + 1);
+      };
+    }, 5000);
+  };
+
+  cycleImages(0);
 })();
 
 export { imageSlider }
