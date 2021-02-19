@@ -18,7 +18,7 @@ const upperNavLinks = (() => {
     }
   };
 
-  const moveLinks = (recursion) => {
+  const moveLinks = () => {
     const navbar = document.getElementById("upper-nav");
     const navWidth = navbar.offsetWidth;
     const stopWidth = moreContainer.offsetWidth + convertRemToPixels(10);
@@ -44,7 +44,6 @@ const upperNavLinks = (() => {
 
   moveLinks();
   toggleMoreVisibility();
-
   window.addEventListener("resize", () => {
     moveLinks();
     toggleMoreVisibility();
@@ -68,11 +67,9 @@ const upperNavLinks = (() => {
 
   const hideDropdownLinks = (e) => {
     Array.from(dropdownLists).forEach((item) => {
-      if (
-        item !== e.target.nextElementSibling &&
-        !e.target.parentElement.parentElement.classList.contains(
-          "dropdown-links"
-        )
+      if (item !== e.target.nextElementSibling &&
+          !e.target.parentElement.parentElement.classList.contains(
+          "dropdown-links")
       ) {
         item.classList.remove("visible");
       }
@@ -122,6 +119,35 @@ const upperNavLinks = (() => {
   });
 })();
 
+const imageSlider = (() => {
+  const images = [
+    {
+      url: "assets/restaurant-background2.jpg",
+      alt: "An image of a coffee shop interior, with several people sitting at tables."
+    },
+    // {
+    //   url: "",
+    //   alt: ""
+    // },
+    // {
+    //   url: "",
+    //   alt: ""
+    // }
+  ]
+
+  const currentImage = document.querySelector(".current-image");
+  currentImage.setAttribute("src", images[0].url);
+  currentImage.setAttribute("alt", images[0].alt);
+
+  images.forEach(image => {
+    const dot = document.createElement("span");
+    dot.className = "dot";
+    dot.setAttribute("tabindex", "0");
+    document.querySelector(".slider-dots").appendChild(dot);
+  })
+
+})();
+
 const themeOptions = (() => {
   const themeToggle = document.querySelector(".theme-toggle");
   const githubLogo = document.querySelector(".github-logo");
@@ -144,5 +170,4 @@ const themeOptions = (() => {
       changeTheme();
     };
   });
-
 })();
