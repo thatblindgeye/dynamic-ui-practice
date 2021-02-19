@@ -58,8 +58,10 @@ const upperNavLinks = (() => {
     Array.from(dropdownLists).forEach((item) => {
       if (item.classList.contains("visible")) {
         item.previousElementSibling.setAttribute("aria-expanded", "true");
+        item.previousElementSibling.children[0].textContent = "expand_less";
       } else {
         item.previousElementSibling.setAttribute("aria-expanded", "false");
+        item.previousElementSibling.children[0].textContent = "expand_more";
       }
     });
   };
