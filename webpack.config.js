@@ -9,7 +9,7 @@ module.exports = {
     filename: "app.js",
     path: path.resolve(__dirname, "dist"),
   },
-  // devtool: "inline-source-map",
+  devtool: "inline-source-map",
   plugins: [
     new MiniCssExtractPlugin({
       filename: "style-prefixed.css"
