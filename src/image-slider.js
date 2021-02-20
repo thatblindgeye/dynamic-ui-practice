@@ -6,38 +6,40 @@ const imageSlider = (() => {
       url: "assets/images/kate-stone-matheson-uy5t-CJuIK4-unsplash.jpg",
       alt: "A mostly white cat sleeping beneath bed covers.",
       "credit link": "https://unsplash.com/@kstonematheson",
-      "credit name": "Kate Stone Matheson"
+      "credit name": "Kate Stone Matheson on Unsplash"
     },
     {
       url: "assets/images/daria-shatova-46TvM-BVrRI-unsplash.jpg",
       alt: "A small cat laying upside down, staring into the camera with their paws stretched out.",
       "credit link": "https://unsplash.com/@dariasha911",
-      "credit name": "Daria Shatova"
+      "credit name": "Daria Shatova on Unsplash"
     },
     {
       url: "assets/images/jae-park-7GX5aICb5i4-unsplash.jpg",
       alt: "A white and tan cat looking into the camera with their mouth open mid-meow.",
       "credit link": "https://unsplash.com/@jaehunpark",
-      "credit name": "Jae Park"
+      "credit name": "Jae Park on Unsplash"
     },
     {
       url: "assets/images/justin-sinclair-0ptOFauN7n8-unsplash.jpg",
       alt: "Two calico cats, one walking towards the camera and the other sitting and staring at a wall.",
       "credit link": "https://unsplash.com/@justinsinclair",
-      "credit name": "Justin Sinclair"
+      "credit name": "Justin Sinclair on Unsplash"
     },
     {
       url: "assets/images/marko-blazevic-zBvVuRJ71vU-unsplash.jpg",
       alt: "A gray cat standing on their hind legs, with their front paws bent in front of them.",
       "credit link": "https://unsplash.com/@kerber",
-      "credit name": "Marko Blažević"
+      "credit name": "Marko Blažević on Unsplash"
     },
   ];
 
-  images.forEach(image => {
+  images.forEach((image, index) => {
     const dot = document.createElement("span");
     dot.className = "dot";
+    dot.setAttribute("role", "button");
     dot.setAttribute("tabindex", "0");
+    dot.setAttribute("aria-label", `select image ${index + 1}`);
     document.querySelector(".slider-dots").appendChild(dot);
   })
 
@@ -51,7 +53,7 @@ const imageSlider = (() => {
 
   const selectImageByDot = (selection) => {
     imageIndex = selection;
-    restartCycle();
+    resetCycle();
   };
 
   Array.from(dots).forEach((dot, index) => {
@@ -66,10 +68,10 @@ const imageSlider = (() => {
     console.log(e.currentTarget);
     if (e.currentTarget === nextArrow) {
       increaseImageIndex();
-      restartCycle();
+      resetCycle();
     } else if (e.currentTarget === previousArrow) {
       decreaseImageIndex();
-      restartCycle();
+      resetCycle();
     }
   };
 
@@ -79,7 +81,7 @@ const imageSlider = (() => {
   let imageIndex = 0;
   const currentImage = document.querySelector(".current-image");
   const displayImage = () => {
-    const imageCredit = document.querySelector(".credit-link");
+    const imageCredit = document.querySelector("#credit-link");
     currentImage.setAttribute("src", images[imageIndex].url);
     currentImage.setAttribute("alt", images[imageIndex].alt);
     imageCredit.setAttribute("href", images[imageIndex]["credit link"]);
@@ -117,7 +119,7 @@ const imageSlider = (() => {
     }
   };
 
-  const restartCycle = () => {
+  const resetCycle = () => {
     if (cycleState) {
       changeCycleState();
     };
@@ -125,7 +127,7 @@ const imageSlider = (() => {
     changeCycleState();
   }
 
-  // run first slide and start auto cycle on page load
+  // run first slide and start cycle on page load
   displayImage();
   changeCycleState();
 

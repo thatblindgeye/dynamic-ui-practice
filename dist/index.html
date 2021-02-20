@@ -64,17 +64,17 @@
         <h1>Cat Image Slider</h1>
         <p>Click the image to pause the automated cycle!</p>
         <div class="image-container">
-          <div class="previous-arrow slider-arrow" tabindex="0" aria-label="previous image">
+          <div role="button" class="previous-arrow slider-arrow" tabindex="0" aria-label="previous image">
             <span class="material-icons" aria-hidden="true">
               navigate_before
             </span>
           </div>
           <img class="current-image" src="" alt="" tabindex="0">
-          <div class="image-credits">
+          <div id="image-credits" tabindex="0" aria-labelledby="image-credits credit-link">
             Photo by:
-            <a class="credit-link" href=""></a>
+            <a id="credit-link" href=""></a>
           </div>
-          <div class="next-arrow slider-arrow" tabindex="0" aria-label="next image">
+          <div role="button" class="next-arrow slider-arrow" tabindex="0" aria-label="next image">
             <span class="material-icons" aria-hidden="true">
               navigate_next
             </span>
