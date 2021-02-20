@@ -41,16 +41,44 @@ const imageSlider = (() => {
     document.querySelector(".slider-dots").appendChild(dot);
   })
 
+  const dots = document.getElementsByClassName("dot");
   const setActiveDot = (indexInput) => {
-    const dots = document.getElementsByClassName("dot");
     Array.from(dots).forEach((dot) => {
       dot.classList.remove("active-dot");
     });
     dots[indexInput].classList.add("active-dot");
   };
 
-  const cycleImages = (imageIndex) => {
-    const currentImage = document.querySelector(".current-image");
+  const selectImageByDot = (selection) => {
+    imageIndex = selection;
+    restartCycle();
+  };
+
+  Array.from(dots).forEach((dot, index) => {
+    dot.addEventListener("click", () => {
+      selectImageByDot(index);
+    });
+  });
+
+  const nextArrow = document.querySelector(".next-arrow");
+  const previousArrow = document.querySelector(".previous-arrow");
+  const selectImageByArrow = (e) => {
+    console.log(e.currentTarget);
+    if (e.currentTarget === nextArrow) {
+      increaseImageIndex();
+      restartCycle();
+    } else if (e.currentTarget === previousArrow) {
+      decreaseImageIndex();
+      restartCycle();
+    }
+  };
+
+  nextArrow.addEventListener("click", selectImageByArrow);
+  previousArrow.addEventListener("click", selectImageByArrow);
+
+  let imageIndex = 0;
+  const currentImage = document.querySelector(".current-image");
+  const displayImage = () => {
     const imageCredit = document.querySelector(".credit-link");
     currentImage.setAttribute("src", images[imageIndex].url);
     currentImage.setAttribute("alt", images[imageIndex].alt);
@@ -58,17 +86,50 @@ const imageSlider = (() => {
     imageCredit.textContent = images[imageIndex]["credit name"];
 
     setActiveDot(imageIndex);
-
-    setTimeout(() => {
-      if (imageIndex === images.length - 1) {
-        cycleImages(imageIndex = 0);
-      } else {
-        cycleImages(imageIndex + 1);
-      };
-    }, 5000);
   };
 
-  cycleImages(0);
+  const increaseImageIndex = () => {
+    if (imageIndex === images.length - 1) {
+      imageIndex = 0;
+    } else {
+      imageIndex++;
+    };
+  };
+
+  const decreaseImageIndex = () => {
+    if (imageIndex === 0) {
+      imageIndex = images.length - 1;
+    } else {
+      imageIndex -= 1;
+    };
+  };
+
+  let cycleState;
+  const changeCycleState = () => {
+    if (!cycleState) {
+      cycleState = setInterval(function() {
+        increaseImageIndex();
+        displayImage();
+      }, 5000);
+    } else {
+      clearInterval(cycleState);
+      cycleState = null;
+    }
+  };
+
+  const restartCycle = () => {
+    if (cycleState) {
+      changeCycleState();
+    };
+    displayImage();
+    changeCycleState();
+  }
+
+  // run first slide and start auto cycle on page load
+  displayImage();
+  changeCycleState();
+
+  currentImage.addEventListener("click", changeCycleState);
 })();
 
 export { imageSlider }

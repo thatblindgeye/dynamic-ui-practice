@@ -246,11 +246,6 @@ header {
   background-color: var(--background-base);
 }
 
-.image-slider-container:focus {
-  outline: var(--focus);
-  outline-offset: 5px;
-}
-
 .image-container {
   position: relative;
   width: 90vw;
@@ -264,11 +259,16 @@ header {
   overflow: hidden;
 }
 
-.image-container img {
+.current-image {
   display: block;
   width: 100%;
   height: auto;
   margin: auto;
+  transition: transform 0.5s;
+}
+
+.current-image:focus {
+  transform: scale(1.1);
 }
 
 .image-credits {
@@ -304,6 +304,7 @@ header {
 }
 
 .slider-arrow {
+  z-index: 1;
   display: flex;
   align-items: center;
   position: absolute;
