@@ -1,6 +1,6 @@
 # Dynamic UI Practice
 
-This mini-project combines a few practice projects in one: a dropdown menu, a mobile menu, and an image slider.
+This mini-project combines a few practice projects in one: a dropdown menu, a mobile menu, and an image slider. View the live demo of my [dynamic menu and image slider](https://thatblindgeye.github.io/dynamic-ui-practice/).
 
 ## Dropdown/Mobile Menu
 ![a gif previewing the collapsing menu](dist/assets/images/collapsing-menu.gif)
