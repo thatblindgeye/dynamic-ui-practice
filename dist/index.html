@@ -50,7 +50,7 @@
             <span role="button" class="dropdown-button more-links-button" tabindex="0" aria-expanded="false">More
               <span class="material-icons" aria-hidden="true">expand_more</span>
             </span>
-            <ul class="dropdown-links more-links" aria-labelledby="more-links-button">
+            <ul class="dropdown-links more-links" tabindex="-1">
             </ul>
           </li>
         </ul>
@@ -64,15 +64,15 @@
         <h1>Cat Image Slider</h1>
         <p>Click the image to pause the automated cycle!</p>
         <div class="image-container">
-          <div role="button" class="previous-arrow slider-arrow" tabindex="0" aria-label="previous image">
-            <span class="material-icons" aria-hidden="true">
-              navigate_before
-            </span>
-          </div>
           <img class="current-image" src="" alt="" tabindex="0">
           <div id="image-credits" tabindex="0" aria-labelledby="image-credits credit-link">
             Photo by:
             <a id="credit-link" href=""></a>
+          </div>
+          <div role="button" class="previous-arrow slider-arrow" tabindex="0" aria-label="previous image">
+            <span class="material-icons" aria-hidden="true">
+              navigate_before
+            </span>
           </div>
           <div role="button" class="next-arrow slider-arrow" tabindex="0" aria-label="next image">
             <span class="material-icons" aria-hidden="true">

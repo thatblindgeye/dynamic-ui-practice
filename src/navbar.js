@@ -138,6 +138,7 @@ const upperNavLinks = (() => {
   window.addEventListener("keydown", (e) => {
     if (e.key === "Tab") {
       trapFocus(e);
+      console.log(e.target);
     }
   })
 

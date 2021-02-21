@@ -318,7 +318,6 @@ h1, p {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: max-content;
   height: 5rem;
   transition: background-color 0.3s;
 }
