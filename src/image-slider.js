@@ -35,6 +35,8 @@ const imageSlider = (() => {
   ];
 
   images.forEach((image, index) => {
+    
+
     const dot = document.createElement("span");
     dot.className = "dot";
     dot.setAttribute("role", "button");

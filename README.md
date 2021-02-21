@@ -4,15 +4,15 @@ This mini-project combines a few practice projects in one: a dropdown menu, a mo
 
 ## Dropdown/Mobile Menu
 ![a gif previewing the collapsing menu](dist/assets/images/collapsing-menu.gif)
-I decided to opt for a progressively collapsing menu for the first time. As the window is resized (and upon loading the page), the navbar automatically moves links from the main, visible area into the slightly hidden "more" dropdown menu. 
+I decided to opt for a progressively collapsing menu for the first time to combine these two items into one. As the window is resized (and upon loading the page), the navbar automatically moves links from the main, visible area into the slightly hidden "more" dropdown menu. 
 <br><br>
 ![a gif previewing dropdown menus "trapping" focus](dist/assets/images/dropdown-loop.gif)
-I also implemented a function to "trap the focus" inside dropdown menus when they are expanded, so that keyboard users don't Tab to the rest of the page with a dropdown menu still open.
+I also implemented a function to "trap the focus" inside dropdown menus when they are expanded, so that keyboard users don't Tab to the rest of the page with a dropdown menu still open. This is an issue I've encountered on previous projects when using modals, and it's something I've wanted to address.
 <br><br>
 ## Image Slider
 ![a gif previewing the features of the image slider](dist/assets/images/image-slider-features.gif)
 For the image slider, I added functionality to:
-  1. automatically change the image every 5 seconds.
+  1. automatically change the image every 5 seconds (the gif preview changes images at a faster rate to show the pause feature).
   2. manually change the image by clicking a "next" or "previous" arrow or by clicking a navigational dot below the image.
   3. pause the automated change by clicking the image itself. For keyboard users, this can be achieved by pressing the space or Enter key when the image has focus (when you notice the image has "zoomed in").
 

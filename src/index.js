@@ -11,19 +11,15 @@ const themeOptions = (() => {
   const changeTheme = () => {
     if (document.documentElement.getAttribute("theme") === "dark") {
       document.documentElement.setAttribute("theme", "light");
-      githubLogo.setAttribute("src", "assets/GitHub-Mark-32px.png");
+      themeToggle.setAttribute("aria-checked", "true");
+      githubLogo.setAttribute("src", "assets/images/logos/GitHub-Mark-32px.png");
     } else {
       document.documentElement.setAttribute("theme", "dark");
-      githubLogo.setAttribute("src", "assets/GitHub-Mark-Light-32px.png");
+      themeToggle.setAttribute("aria-checked", "false");
+      githubLogo.setAttribute("src", "assets/images/logos/GitHub-Mark-Light-32px.png");
     };
   };
 
   changeTheme();
   themeToggle.addEventListener("click", changeTheme);
-  themeToggle.addEventListener("keydown", (e) => {
-    if (e.key === " " || e.key === "Enter") {
-      e.preventDefault();
-      changeTheme();
-    };
-  });
 })();
