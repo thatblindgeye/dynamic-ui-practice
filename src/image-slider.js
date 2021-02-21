@@ -51,7 +51,7 @@ const imageSlider = (() => {
     dots[indexInput].classList.add("active-dot");
   };
 
-  const selectImageByDot = (selection) => {
+  const selectImageByDot = (selection, e) => {
     imageIndex = selection;
     resetCycle();
   };
@@ -59,6 +59,13 @@ const imageSlider = (() => {
   Array.from(dots).forEach((dot, index) => {
     dot.addEventListener("click", () => {
       selectImageByDot(index);
+    });
+
+    dot.addEventListener("keydown", (e) => {
+      if (e.key === " " || e.key === "Enter") {
+        e.preventDefault();
+        selectImageByDot(index);
+      }
     });
   });
 
@@ -76,7 +83,19 @@ const imageSlider = (() => {
   };
 
   nextArrow.addEventListener("click", selectImageByArrow);
+  nextArrow.addEventListener("keydown", (e) => {
+    if (e.key === " " || e.key === "Enter") {
+      e.preventDefault();
+      selectImageByArrow(e);
+    }
+  });
   previousArrow.addEventListener("click", selectImageByArrow);
+  previousArrow.addEventListener("keydown", (e) => {
+    if (e.key === " " || e.key === "Enter") {
+      e.preventDefault();
+      selectImageByArrow(e);
+    }
+  });
 
   let imageIndex = 0;
   const currentImage = document.querySelector(".current-image");
@@ -107,7 +126,7 @@ const imageSlider = (() => {
   };
 
   let cycleState;
-  const changeCycleState = () => {
+  const changeCycleState = (e) => {
     if (!cycleState) {
       cycleState = setInterval(function() {
         increaseImageIndex();
@@ -132,6 +151,12 @@ const imageSlider = (() => {
   changeCycleState();
 
   currentImage.addEventListener("click", changeCycleState);
+  currentImage.addEventListener("keydown", (e) => {
+    if (e.key === " " || e.key === "Enter") {
+      e.preventDefault();
+      changeCycleState(e);
+    }
+  })
 })();
 
 export { imageSlider }

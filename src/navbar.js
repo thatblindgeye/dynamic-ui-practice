@@ -114,9 +114,33 @@ const upperNavLinks = (() => {
       Array.from(dropdownLists).forEach((item) => {
         item.classList.remove("visible");
       });
-    }
-    checkAriaExpanded();
+      checkAriaExpanded();
+    };
   });
+
+  const trapFocus = (e) => {
+    const currentDropdown = document.querySelector(".visible");
+    if (currentDropdown) {
+      const currentList = currentDropdown.children;
+      const lastItem = currentList[currentList.length - 1].children[0];
+      if (document.activeElement === lastItem && !e.shiftKey) {
+        currentDropdown.previousElementSibling.focus();
+        e.preventDefault();
+      } else if (document.activeElement === 
+            currentDropdown.previousElementSibling && e.shiftKey) 
+      {
+        lastItem.focus();
+        e.preventDefault();
+      };
+    };
+  }
+
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Tab") {
+      trapFocus(e);
+    }
+  })
+
 })();
 
 export { upperNavLinks }
